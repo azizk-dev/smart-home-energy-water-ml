@@ -1,0 +1,203 @@
+{
+  "python": "3.13.18",
+  "seed": 42,
+  "packages": {
+    "pandas": "2.2.3",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.6.1",
+    "matplotlib": "3.10.0",
+    "joblib": "1.6.0"
+  },
+  "files": {
+    "smart_water_meter.csv": {
+      "sha256": "5a178c0a25058aa3731d3df334cbaf8e3746ec9f5b2c8712a02c6127d442d97b",
+      "bytes": 232780
+    },
+    "smart_sensors.csv": {
+      "sha256": "6fb16f17062d0dce6fa05818c324952cc482a6eb5d742b9f6f06383bbda7b261",
+      "bytes": 9437184
+    },
+    "energydata_complete.csv": {
+      "sha256": "2820bf712ad0275cb18b85a05250926100d8e65ebb9f4d2d016ca91ea152a25d",
+      "bytes": 11979363
+    }
+  },
+  "water_target": {
+    "kind": "diagnostic",
+    "column": "v2",
+    "units": null,
+    "definition_source": null
+  },
+  "sensor_status": {
+    "parsed": false,
+    "error": "Error tokenizing data. C error: EOF inside string starting at row 102865",
+    "used": false
+  },
+  "water_grid": {
+    "total_hours": 2562,
+    "observed_hours": 1568,
+    "missing_hours": 994
+  },
+  "water": {
+    "selected_model": "Naive Persistence",
+    "splits": {
+      "train": {
+        "rows": 1076,
+        "start": "2020-12-18 01:00:00",
+        "end": "2021-03-15 09:00:00"
+      },
+      "validation": {
+        "rows": 231,
+        "start": "2021-03-15 10:00:00",
+        "end": "2021-03-25 02:00:00"
+      },
+      "test": {
+        "rows": 231,
+        "start": "2021-03-25 03:00:00",
+        "end": "2021-04-03 17:00:00"
+      }
+    },
+    "features": [
+      "hour",
+      "dayofweek",
+      "weekend",
+      "month",
+      "dayofmonth",
+      "weekofyear",
+      "hour_sin",
+      "hour_cos",
+      "dow_sin",
+      "dow_cos",
+      "water_target_lag_1",
+      "water_target_lag_2",
+      "water_target_lag_3",
+      "water_target_lag_6",
+      "water_target_lag_12",
+      "water_target_lag_24",
+      "water_target_roll_mean_3",
+      "water_target_roll_std_3",
+      "water_target_roll_max_3",
+      "water_target_roll_mean_6",
+      "water_target_roll_std_6",
+      "water_target_roll_max_6",
+      "water_target_roll_mean_12",
+      "water_target_roll_std_12",
+      "water_target_roll_max_12",
+      "water_target_roll_mean_24",
+      "water_target_roll_std_24",
+      "water_target_roll_max_24"
+    ],
+    "tuning": "Not performed; fixed parameters",
+    "parameters": {
+      "Linear Regression": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler()), ('model', LinearRegression())], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'scaler': StandardScaler(), 'model': LinearRegression(), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'model__copy_X': True, 'model__fit_intercept': True, 'model__n_jobs': None, 'model__positive': False}",
+      "Ridge Regression": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler()), ('model', Ridge())], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'scaler': StandardScaler(), 'model': Ridge(), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'model__alpha': 1.0, 'model__copy_X': True, 'model__fit_intercept': True, 'model__max_iter': None, 'model__positive': False, 'model__random_state': None, 'model__solver': 'auto', 'model__tol': 0.0001}",
+      "Random Forest": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('model', RandomForestRegressor(min_samples_leaf=2, n_estimators=300, n_jobs=-1,\n                      random_state=42))], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'model': RandomForestRegressor(min_samples_leaf=2, n_estimators=300, n_jobs=-1,\n                      random_state=42), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'model__bootstrap': True, 'model__ccp_alpha': 0.0, 'model__criterion': 'squared_error', 'model__max_depth': None, 'model__max_features': 1.0, 'model__max_leaf_nodes': None, 'model__max_samples': None, 'model__min_impurity_decrease': 0.0, 'model__min_samples_leaf': 2, 'model__min_samples_split': 2, 'model__min_weight_fraction_leaf': 0.0, 'model__monotonic_cst': None, 'model__n_estimators': 300, 'model__n_jobs': -1, 'model__oob_score': False, 'model__random_state': 42, 'model__verbose': 0, 'model__warm_start': False}",
+      "Gradient Boosting": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('model', GradientBoostingRegressor(learning_rate=0.03, n_estimators=300, random_state=42))], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'model': GradientBoostingRegressor(learning_rate=0.03, n_estimators=300, random_state=42), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'model__alpha': 0.9, 'model__ccp_alpha': 0.0, 'model__criterion': 'friedman_mse', 'model__init': None, 'model__learning_rate': 0.03, 'model__loss': 'squared_error', 'model__max_depth': 3, 'model__max_features': None, 'model__max_leaf_nodes': None, 'model__min_impurity_decrease': 0.0, 'model__min_samples_leaf': 1, 'model__min_samples_split': 2, 'model__min_weight_fraction_leaf': 0.0, 'model__n_estimators': 300, 'model__n_iter_no_change': None, 'model__random_state': 42, 'model__subsample': 1.0, 'model__tol': 0.0001, 'model__validation_fraction': 0.1, 'model__verbose': 0, 'model__warm_start': False}"
+    }
+  },
+  "energy": {
+    "selected_model": "Ridge Regression",
+    "splits": {
+      "train": {
+        "rows": 13108,
+        "start": "2016-01-18 17:00:00",
+        "end": "2016-04-18 17:30:00"
+      },
+      "validation": {
+        "rows": 2809,
+        "start": "2016-04-18 17:40:00",
+        "end": "2016-05-08 05:40:00"
+      },
+      "test": {
+        "rows": 2810,
+        "start": "2016-05-08 05:50:00",
+        "end": "2016-05-27 18:00:00"
+      }
+    },
+    "features": [
+      "lights",
+      "T1",
+      "RH_1",
+      "T2",
+      "RH_2",
+      "T3",
+      "RH_3",
+      "T4",
+      "RH_4",
+      "T5",
+      "RH_5",
+      "T6",
+      "RH_6",
+      "T7",
+      "RH_7",
+      "T8",
+      "RH_8",
+      "T9",
+      "RH_9",
+      "T_out",
+      "Press_mm_hg",
+      "RH_out",
+      "Windspeed",
+      "Visibility",
+      "Tdewpoint",
+      "hour",
+      "dayofweek",
+      "weekend",
+      "month",
+      "dayofmonth",
+      "weekofyear",
+      "hour_sin",
+      "hour_cos",
+      "dow_sin",
+      "dow_cos",
+      "Appliances_lag_1",
+      "Appliances_lag_2",
+      "Appliances_lag_3",
+      "Appliances_lag_6",
+      "Appliances_lag_12",
+      "Appliances_lag_144",
+      "Appliances_lag_1008",
+      "Appliances_roll_mean_3",
+      "Appliances_roll_std_3",
+      "Appliances_roll_max_3",
+      "Appliances_roll_mean_6",
+      "Appliances_roll_std_6",
+      "Appliances_roll_max_6",
+      "Appliances_roll_mean_12",
+      "Appliances_roll_std_12",
+      "Appliances_roll_max_12",
+      "Appliances_roll_mean_36",
+      "Appliances_roll_std_36",
+      "Appliances_roll_max_36",
+      "Appliances_roll_mean_144",
+      "Appliances_roll_std_144",
+      "Appliances_roll_max_144",
+      "indoor_temp_mean",
+      "indoor_temp_std",
+      "indoor_humidity_mean",
+      "indoor_humidity_std",
+      "indoor_outdoor_temp_difference"
+    ],
+    "tuning": "Not performed; fixed parameters",
+    "parameters": {
+      "Linear Regression": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler()), ('model', LinearRegression())], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'scaler': StandardScaler(), 'model': LinearRegression(), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'model__copy_X': True, 'model__fit_intercept': True, 'model__n_jobs': None, 'model__positive': False}",
+      "Ridge Regression": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler()), ('model', Ridge())], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'scaler': StandardScaler(), 'model': Ridge(), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'model__alpha': 1.0, 'model__copy_X': True, 'model__fit_intercept': True, 'model__max_iter': None, 'model__positive': False, 'model__random_state': None, 'model__solver': 'auto', 'model__tol': 0.0001}",
+      "Random Forest": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('model', RandomForestRegressor(min_samples_leaf=2, n_estimators=300, n_jobs=-1,\n                      random_state=42))], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'model': RandomForestRegressor(min_samples_leaf=2, n_estimators=300, n_jobs=-1,\n                      random_state=42), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'model__bootstrap': True, 'model__ccp_alpha': 0.0, 'model__criterion': 'squared_error', 'model__max_depth': None, 'model__max_features': 1.0, 'model__max_leaf_nodes': None, 'model__max_samples': None, 'model__min_impurity_decrease': 0.0, 'model__min_samples_leaf': 2, 'model__min_samples_split': 2, 'model__min_weight_fraction_leaf': 0.0, 'model__monotonic_cst': None, 'model__n_estimators': 300, 'model__n_jobs': -1, 'model__oob_score': False, 'model__random_state': 42, 'model__verbose': 0, 'model__warm_start': False}",
+      "Gradient Boosting": "{'memory': None, 'steps': [('imputer', SimpleImputer(strategy='median')), ('model', GradientBoostingRegressor(learning_rate=0.03, n_estimators=300, random_state=42))], 'transform_input': None, 'verbose': False, 'imputer': SimpleImputer(strategy='median'), 'model': GradientBoostingRegressor(learning_rate=0.03, n_estimators=300, random_state=42), 'imputer__add_indicator': False, 'imputer__copy': True, 'imputer__fill_value': None, 'imputer__keep_empty_features': False, 'imputer__missing_values': nan, 'imputer__strategy': 'median', 'model__alpha': 0.9, 'model__ccp_alpha': 0.0, 'model__criterion': 'friedman_mse', 'model__init': None, 'model__learning_rate': 0.03, 'model__loss': 'squared_error', 'model__max_depth': 3, 'model__max_features': None, 'model__max_leaf_nodes': None, 'model__min_impurity_decrease': 0.0, 'model__min_samples_leaf': 1, 'model__min_samples_split': 2, 'model__min_weight_fraction_leaf': 0.0, 'model__n_estimators': 300, 'model__n_iter_no_change': None, 'model__random_state': 42, 'model__subsample': 1.0, 'model__tol': 0.0001, 'model__validation_fraction': 0.1, 'model__verbose': 0, 'model__warm_start': False}"
+    }
+  },
+  "simulation": {
+    "peak_hours": [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "flexible_fraction": 0.2,
+    "shift_fraction": 0.5,
+    "receiving_limit_Wh": 40.0,
+    "maximum_delay_hours": 24,
+    "water_saving": "not estimated"
+  }
+}
